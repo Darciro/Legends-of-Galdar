@@ -3,12 +3,14 @@ package br.com.galdar.legendsofgaldar.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import br.com.galdar.legendsofgaldar.R;
 
@@ -71,7 +73,8 @@ public class CharactersFragment extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // String charSelected = charsList.getItemIdAtPosition(position).toString();
+                String charSelectedPos = String.valueOf( charsList.getItemIdAtPosition(position) );
+                Toast.makeText(getContext(), charSelectedPos, Toast.LENGTH_LONG).show();
             }
         });
 
