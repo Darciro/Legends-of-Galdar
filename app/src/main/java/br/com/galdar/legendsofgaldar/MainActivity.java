@@ -3,6 +3,7 @@ package br.com.galdar.legendsofgaldar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,14 +13,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.ListView;
+
+import java.util.List;
+
+import br.com.galdar.legendsofgaldar.fragments.AboutFragment;
+import br.com.galdar.legendsofgaldar.fragments.CharactersFragment;
+import br.com.galdar.legendsofgaldar.fragments.ContactFragment;
+import br.com.galdar.legendsofgaldar.fragments.HomeFragment;
+import br.com.galdar.legendsofgaldar.fragments.TavernFragment;
+import br.com.galdar.legendsofgaldar.fragments.ToolsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        frameLayout = findViewById(R.id.frameContainer);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -31,6 +49,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+        fab.hide();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +59,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        HomeFragment homeFragment = new HomeFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameContainer, homeFragment);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -79,18 +103,69 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_slideshow) {
+            HomeFragment homeFragment = new HomeFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, homeFragment);
+            fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_manage) {
+            fab.hide();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_tavern) {
 
-        } else if (id == R.id.nav_send) {
+            TavernFragment tavernFragment = new TavernFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, tavernFragment);
+            fragmentTransaction.commit();
+
+            fab.hide();
+
+        } else if (id == R.id.nav_characters) {
+
+            CharactersFragment charactersFragment = new CharactersFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, charactersFragment);
+            fragmentTransaction.commit();
+
+            fab.show();
+
+
+        } else if (id == R.id.nav_tools) {
+
+            ToolsFragment toolsFragment = new ToolsFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, toolsFragment);
+            fragmentTransaction.commit();
+
+            fab.hide();
+
+        } else if (id == R.id.nav_about) {
+
+            AboutFragment aboutFragment = new AboutFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, aboutFragment);
+            fragmentTransaction.commit();
+
+            fab.hide();
+
+        } else if (id == R.id.nav_contact) {
+
+            ContactFragment contactFragment = new ContactFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, contactFragment);
+            fragmentTransaction.commit();
+
+            fab.hide();
 
         }
 
