@@ -1,4 +1,4 @@
-package br.com.galdar.legendsofgaldar;
+package br.com.galdar.legendsofgaldar.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +19,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import br.com.galdar.legendsofgaldar.R;
 import br.com.galdar.legendsofgaldar.fragments.AboutFragment;
 import br.com.galdar.legendsofgaldar.fragments.CharactersFragment;
 import br.com.galdar.legendsofgaldar.fragments.ContactFragment;
