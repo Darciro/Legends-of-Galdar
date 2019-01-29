@@ -1,5 +1,6 @@
 package br.com.galdar.legendsofgaldar.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FrameLayout frameLayout;
+    // private FloatingActionButton fabSendEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
         if (id == R.id.nav_home) {
 
             HomeFragment homeFragment = new HomeFragment();
@@ -121,6 +124,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
             fab.hide();
+            // fabSendEmail.hide();
 
         } else if (id == R.id.nav_tavern) {
 
@@ -130,6 +134,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
             fab.hide();
+            // fabSendEmail.hide();
 
         } else if (id == R.id.nav_characters) {
 
@@ -139,7 +144,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
             fab.show();
-
+            // fabSendEmail.hide();
 
         } else if (id == R.id.nav_tools) {
 
@@ -149,6 +154,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
             fab.hide();
+            // fabSendEmail.hide();
 
         } else if (id == R.id.nav_about) {
 
@@ -158,6 +164,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
             fab.hide();
+            // fabSendEmail.hide();
 
         } else if (id == R.id.nav_contact) {
 
@@ -166,6 +173,15 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frameContainer, contactFragment);
             fragmentTransaction.commit();
 
+            /*fabSendEmail = (FloatingActionButton) findViewById(R.id.fab_send_email);
+            fabSendEmail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+            fabSendEmail.show();*/
             fab.hide();
 
         }
